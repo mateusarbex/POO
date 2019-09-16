@@ -30,16 +30,15 @@
             echo '<div class="col-sm-1 pessoa"><a class="btn btn-primary" href="index.php?delete=' . $row['id'] . '">Deletar</a></div>';
             echo '</div>';
         }
-        function delete($id)
+        function delete($id, $pdo)
         {
-            $pdo = Banco::conectar();
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql =  'DELETE FROM pessoa WHERE id=' . $id;
             $p = $pdo->prepare($sql);
             $p->execute(array($id));
+            header("Location: index.php");
         }
         if (isset($_GET['delete'])) {
-            delete($_GET['delete']);
+            delete($_GET['delete'], $pdo);
         }
         Banco::desconectar();
         ?>
