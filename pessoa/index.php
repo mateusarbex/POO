@@ -18,15 +18,21 @@
             <div class="col-sm-3"></div>
         </div>
         <?php
+        include 'pessoa.php';
         include 'banco.php';
         $pdo = Banco::conectar();
-        $sql = 'SELECT * FROM pessoa ORDER BY id DESC';
+        $sql = 'SELECT * FROM pessoa ORDER BY nome ASC';
         foreach ($pdo->query($sql) as $row) {
+            $pessoa = new Pessoa();
+            $pessoa->setNome($row['nome']);
+            $pessoa->setCpf($row['cpf']);
+            $pessoa->setSexo($row['sexo']);
+            $pessoa->setCor_da_pele($row['cor_da_pele']);
             echo '<div class="row field">';
-            echo '<div class="col-sm-3 pessoa">' . '<p class="lead">' . $row['nome'] . '</p>' . '</div>';
-            echo '<div class="col-sm-2 pessoa">'  . '<p class="lead">' . $row['cpf'] . '</p>' . '</div>';
-            echo strcmp($row['sexo'], 'F') ? '<div class="col-sm-2 pessoa"><p class="lead">Masculino</p> </div>' : '<div class="col-sm-2 pessoa"><p class="lead">Feminino</p></div>';
-            echo '<div class="col-sm-2 pessoa">'  . '<p class="lead">' . $row['cor_da_pele'] . '</p>' . '</div>';
+            echo '<div class="col-sm-3 pessoa">' . '<p class="lead">' . $pessoa->getNome() . '</p>' . '</div>';
+            echo '<div class="col-sm-2 pessoa">'  . '<p class="lead">' . $pessoa->getCpf() . '</p>' . '</div>';
+            echo strcmp($pessoa->getSexo(), 'F') ? '<div class="col-sm-2 pessoa"><p class="lead">Masculino</p> </div>' : '<div class="col-sm-2 pessoa"><p class="lead">Feminino</p></div>';
+            echo '<div class="col-sm-2 pessoa">'  . '<p class="lead">' . $pessoa->getCor_da_pele() . '</p>' . '</div>';
             echo '<div class="col-sm-1 pessoa"><a class="btn btn-primary" href="index.php?delete=' . $row['id'] . '">Deletar</a></div>';
             echo '</div>';
         }

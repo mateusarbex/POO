@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 16-Set-2019 às 01:50
+-- Tempo de geração: 19-Set-2019 às 03:54
 -- Versão do servidor: 10.4.6-MariaDB
 -- versão do PHP: 7.1.32
 
@@ -40,6 +40,13 @@ CREATE TABLE `pessoa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Extraindo dados da tabela `pessoa`
+--
+
+INSERT INTO `pessoa` (`id`, `nome`, `data_nasc`, `cpf`, `sexo`, `altura`, `peso`, `cor_da_pele`) VALUES
+(2, 'Mateus Arbex', '27/01/1995', '975.131.992-72', 'M', 1.78, 105, 'Branca');
+
+--
 -- Índices para tabelas despejadas
 --
 
@@ -48,6 +55,16 @@ CREATE TABLE `pessoa` (
 --
 ALTER TABLE `pessoa`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `pessoa`
+--
+ALTER TABLE `pessoa`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
