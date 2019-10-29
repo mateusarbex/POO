@@ -1,10 +1,10 @@
 <?php
 class Banco
 {
-    private static $dbNome = 'db_projpo';
+    private static $dbNome = 'bd_projeto';
     private static $dbHost = 'localhost';
     private static $dbUsuario = 'root';
-    private static $dbSenha = '';
+    private static $dbSenha = 'fucapi';
 
     private static $cont = null;
 
@@ -30,3 +30,4 @@ class Banco
         self::$cont = null;
     }
 }
+objeto = obj.func

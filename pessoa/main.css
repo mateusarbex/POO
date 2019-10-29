@@ -14,6 +14,8 @@
     margin-bottom: 10px;
 }
 .pessoa{
+    border-left: solid thin gray;
     padding: 0;
     margin: 10px;
+    
 }

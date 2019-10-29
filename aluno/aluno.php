@@ -1,7 +1,7 @@
 <?php
 class Aluno{
     private $codAluno;
-
+    public $turma;
     /**
      * Get the value of codAluno
      */ 
@@ -90,6 +90,7 @@ class Aluno{
 
         return $this;
     }
+  
     public function ListarDados(){
         echo '<div>'. $this->getCodAluno();
         echo ' ' .  $this->getNome();

@@ -1,15 +1,11 @@
 <?php
-require 'aluno.php';
 class Turma{
 
     public $codTurma;
+    public $descricao;
     public $sala;
     public $horario;
-    public $aluno = new Aluno();
-
-    
-
-
+    public $alunos;
     /**
      * Get the value of codTurma
      */ 
@@ -70,7 +66,4 @@ class Turma{
         return $this;
     }
 }
-
-
-
 ?>

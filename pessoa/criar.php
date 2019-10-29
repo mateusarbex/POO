@@ -18,25 +18,25 @@
             <div class=" row row-field">
                 <div class="col-sm">
                     <label class="label">Nome</label class="label">
-                    <input size="50" class="form-control" name="nome" type="text" required="" value="">
+                    <input size="50" class="form-control" name="nome" type="text" required="" value="<?php echo !empty($nome) ? $nome : ''; ?>">
                 </div>
                 <div class="col-sm">
                     <label class="label">CPF</label class="label">
-                    <input size="80" class="form-control" name="cpf" type="text" required="" value="">
+                    <input size="80" class="form-control" name="cpf" type="text" required="" value="<?php echo !empty($cpf) ? $cpf : ''; ?>">
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
                     <label class="label">Data de nascimento</label class="label">
-                    <input size="80" class="form-control" name="data_nasc" type="text" required="" value="">
+                    <input size="80" class="form-control" name="data_nasc" type="text" required="" value="<?php echo !empty($data) ? $data : ''; ?>">
                 </div>
                 <div class="col-sm-2">
                     <label class="label">Altura</label class="label">
-                    <input size="80" class="form-control" name="altura" type="text" required="" value="">
+                    <input size="80" class="form-control" name="altura" type="text" required="" value="<?php echo !empty($altura) ? $altura : ''; ?>">
                 </div>
                 <div class="col-sm-2">
                     <label class="label">Peso</label class="label">
-                    <input size="80" class="form-control" name="peso" type="text" required="" value="">
+                    <input size="80" class="form-control" name="peso" type="text" required="" value="<?php echo !empty($peso) ? $peso : ''; ?>">
                 </div>
                 <div class="col-sm-4">
                     <label class="label">Cor da pele</label class="label">
@@ -68,23 +68,21 @@
 
 </html>
 <?php
-require 'pessoa.php';
 require 'banco.php';
-$pessoa = new Pessoa();
 if (!empty($_POST)) {
-    $pessoa->setNome($_POST['nome']);
-    $pessoa->setCpf($_POST['cpf']);
-    $pessoa->setData_nasc($_POST['data_nasc']);
-    $pessoa->setAltura($_POST['altura']);
-    $pessoa->setPeso($_POST['peso']);
-    $pessoa->setCor_da_pele($_POST['cor_da_pele']);
-    $pessoa->setSexo($_POST['sexo']);
+    $nome = $_POST['nome'];
+     $cpf = $_POST['cpf'];
+    $data    = $_POST['data_nasc'];
+    $altura = $_POST['altura'];
+    $peso = $_POST['peso'];
+    $cor_da_pele = $_POST['cor_da_pele'];
+    $sexo = $_POST['sexo'];
 
     $pdo = Banco::conectar();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "INSERT INTO pessoa (nome, cpf, data_nasc, altura, peso,cor_da_pele,sexo) VALUES(?,?,?,?,?,?,?)";
     $q = $pdo->prepare($sql);
-    $q->execute(array($pessoa->getNome(), $pessoa->getCpf(), $pessoa->getData_nasc(), $pessoa->getAltura(), $pessoa->getPeso(), $pessoa->getCor_da_pele(), $pessoa->getSexo()));
+    $q->execute(array($nome, $cpf, $data, $altura, $peso, $cor_da_pele, $sexo));
     header("Location: index.php");
     Banco::desconectar();
 }
